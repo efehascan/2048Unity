@@ -79,8 +79,9 @@ public class GameManager : MonoBehaviour
         foreach (var node in freeNodes.Take(amount))
         {
             var block = Instantiate(blockPrefeb, node.Pos, Quaternion.identity);
-            block.Init(GetBlockTypeByValue(2));
-            
+            block.Init(GetBlockTypeByValue(Random.value > 0.8f ? 4 : 2));
+            _blocks.Add(block);
+
         }
 
         if (freeNodes.Count() == 1)
