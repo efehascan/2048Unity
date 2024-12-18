@@ -49,6 +49,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if(_gameState != GameState.WaitingInput) return;
+
+        if(Input.GetKeyDown(KeyCode.LeftArrow)) Shift(Vector2.left);
+        if(Input.GetKeyDown(KeyCode.RightArrow)) Shift(Vector2.right);
+        if(Input.GetKeyDown(KeyCode.UpArrow)) Shift(Vector2.up);
+        if(Input.GetKeyDown(KeyCode.DownArrow)) Shift(Vector2.down);
+    }
+
     void GenerateGrid()
     {
         round = 0;
@@ -80,6 +90,7 @@ public class GameManager : MonoBehaviour
         {
             var block = Instantiate(blockPrefeb, node.Pos, Quaternion.identity);
             block.Init(GetBlockTypeByValue(Random.value > 0.8f ? 4 : 2));
+            block.SetBlock(node);
             _blocks.Add(block);
 
         }
@@ -90,6 +101,37 @@ public class GameManager : MonoBehaviour
             return;
         }
     }
+
+    void Shift(Vector2 direction)
+    {
+        var orderedBlocks = _blocks.OrderBy(b => b.Pos.x).ThenBy(b => b.Pos.y).ToList();
+        if(direction == Vector2.right || direction == Vector2.up) orderedBlocks.Reverse();
+
+        foreach (var block in orderedBlocks)
+        {
+            var next = block.Node;
+            do
+            {
+                block.SetBlock(next);
+                
+                var possibleNode = GetNodeAtPosition(next.Pos + direction);
+                if (possibleNode != null)
+                {
+                    // Nodun olduğunu öğrenme
+                    if(possibleNode.OccipiedBlock == null) next = possibleNode;
+                }
+
+            } while (next != block.Node);
+            
+            block.transform.position = block.Node.Pos;
+        }
+    }
+
+    Node GetNodeAtPosition(Vector2 position)
+    {
+        return _nodes.FirstOrDefault(n => n.Pos == position);
+    }
+    
 }
 
 [Serializable]
