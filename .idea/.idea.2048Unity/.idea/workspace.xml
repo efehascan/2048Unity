@@ -4,35 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9dd6e493-571e-4f3c-aba2-81a96457a8b8" name="Changes" comment="" />
+    <list default="true" id="909c498a-2a6e-4e6e-8f95-5bbc2a7990a3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "efehascan"
-  }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/efehascan/2048Unity.git",
-    "accountId": "27ee1077-2d4c-4eee-8ed7-b29f5fae3bc5"
-  }
-}]]></component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Script/Block.cs" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
+  "associatedIndex": 2
 }]]></component>
-  <component name="ProjectId" id="2qPDfRKCfNoecDfM7hmhEtlzFaI" />
+  <component name="ProjectId" id="2qPHRvAwMATnmEzqabDpOy0qLrL" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -40,7 +21,6 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -52,16 +32,16 @@
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.25f1\Editor\Unity.exe" />
-      <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\theda\OneDrive\Belgeler\GitHub\2048Unity -debugCodeOptimization" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\theda\OneDrive\Belgeler\GitHub\2048Unity" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\theda\OneDrive\Masaüstü\2048Unity -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\theda\OneDrive\Masaüstü\2048Unity" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.25f1\Editor\Unity.exe" />
-      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\theda\OneDrive\Belgeler\GitHub\2048Unity -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\theda\OneDrive\Belgeler\GitHub\2048Unity" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\theda\OneDrive\Masaüstü\2048Unity -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\theda\OneDrive\Masaüstü\2048Unity" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
@@ -90,12 +70,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9dd6e493-571e-4f3c-aba2-81a96457a8b8" name="Changes" comment="" />
-      <created>1734555420503</created>
+      <changelist id="909c498a-2a6e-4e6e-8f95-5bbc2a7990a3" name="Changes" comment="" />
+      <created>1734557287369</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1734555420503</updated>
-      <workItem from="1734555423725" duration="1046000" />
+      <updated>1734557287369</updated>
+      <workItem from="1734557288470" duration="1448000" />
     </task>
     <servers />
   </component>

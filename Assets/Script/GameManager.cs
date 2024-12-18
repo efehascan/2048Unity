@@ -24,7 +24,9 @@ public class GameManager : MonoBehaviour
         }
         var center = new Vector2((float) _widht /2 - 0.5f,(float) _height /2 - 0.5f);
 
-        var board = Instantiate(boardPrefeb, Vector3.zero, Quaternion.identity);
-
+        var board = Instantiate(boardPrefeb, center, Quaternion.identity);
+        board.size = new Vector2(_widht, _height);
+        
+        Camera.main.transform.position = new Vector3(center.x, center.y, -10);
     }
 }
