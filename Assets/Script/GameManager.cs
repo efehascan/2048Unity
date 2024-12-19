@@ -51,12 +51,12 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(_gameState != GameState.WaitingInput) return;
-
         if(Input.GetKeyDown(KeyCode.LeftArrow)) Shift(Vector2.left);
         if(Input.GetKeyDown(KeyCode.RightArrow)) Shift(Vector2.right);
         if(Input.GetKeyDown(KeyCode.UpArrow)) Shift(Vector2.up);
         if(Input.GetKeyDown(KeyCode.DownArrow)) Shift(Vector2.down);
+        
+        if(_gameState != GameState.WaitingInput) return;
     }
 
     void GenerateGrid()
