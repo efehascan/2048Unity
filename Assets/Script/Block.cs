@@ -1,11 +1,14 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Block : MonoBehaviour
 {
-    int value;
+    public int Value;
     public Node Node;
+    public Block MergingBlock;
+    bool Merged = false;
     public Vector2 Pos => transform.position;
     [SerializeField] SpriteRenderer _renderer;
     [SerializeField] private TextMeshPro _text;
@@ -13,7 +16,7 @@ public class Block : MonoBehaviour
 
     public void Init(BlockType type)
     {
-        value = type.Value;
+        Value = type.Value;
         _renderer.color = type.Color;
         _text.text = type.Value.ToString();
         
@@ -26,4 +29,14 @@ public class Block : MonoBehaviour
         Node.OccipiedBlock = this;
     }
 
+    public void MergeBlock(Block blockToMergewith)
+    {
+        MergingBlock = blockToMergewith;
+        
+        Node.OccipiedBlock = null;
+        
+        blockToMergewith.Merged = true;
+    }
+
+    public bool CanMerge(int value) => value == Value && !Merged && MergingBlock == null;
 }

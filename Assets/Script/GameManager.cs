@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Block blockPrefeb;
     [SerializeField] public SpriteRenderer boardPrefeb;
     [SerializeField] public List<BlockType> _types;
+    [SerializeField] public float switchNodeTime = 0.3f;
 
     private List<Node> _nodes;
     private List<Block> _blocks;
@@ -51,12 +53,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        
         if(Input.GetKeyDown(KeyCode.LeftArrow)) Shift(Vector2.left);
         if(Input.GetKeyDown(KeyCode.RightArrow)) Shift(Vector2.right);
         if(Input.GetKeyDown(KeyCode.UpArrow)) Shift(Vector2.up);
         if(Input.GetKeyDown(KeyCode.DownArrow)) Shift(Vector2.down);
         
         if(_gameState != GameState.WaitingInput) return;
+        
     }
 
     void GenerateGrid()
@@ -88,11 +92,8 @@ public class GameManager : MonoBehaviour
 
         foreach (var node in freeNodes.Take(amount))
         {
-            var block = Instantiate(blockPrefeb, node.Pos, Quaternion.identity);
-            block.Init(GetBlockTypeByValue(Random.value > 0.8f ? 4 : 2));
-            block.SetBlock(node);
-            _blocks.Add(block);
-
+            SpawnBlocks(node, Random.value > 0.8f ? 4 : 1);
+            
         }
 
         if (freeNodes.Count() == 1)
@@ -102,8 +103,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void SpawnBlocks(Node node, int value)
+    {
+        var block = Instantiate(blockPrefeb, node.Pos, Quaternion.identity);
+        block.Init(GetBlockTypeByValue(Random.value > 0.8f ? 4 : 2));
+        block.SetBlock(node);
+        _blocks.Add(block);
+    }
+
     void Shift(Vector2 direction)
     {
+        ChangeState(GameState.Moving);
+        
         var orderedBlocks = _blocks.OrderBy(b => b.Pos.x).ThenBy(b => b.Pos.y).ToList();
         if(direction == Vector2.right || direction == Vector2.up) orderedBlocks.Reverse();
 
@@ -118,13 +129,53 @@ public class GameManager : MonoBehaviour
                 if (possibleNode != null)
                 {
                     // Nodun olduğunu öğrenme
-                    if(possibleNode.OccipiedBlock == null) next = possibleNode;
+
+                    if (possibleNode.OccipiedBlock != null && possibleNode.OccipiedBlock.CanMerge(block.Value))
+                    {
+                        block.MergeBlock(possibleNode.OccipiedBlock);
+                    }  
+                    // Diğer spotlara hareket edebilior mu?
+                    else if(possibleNode.OccipiedBlock == null) next = possibleNode;
                 }
 
             } while (next != block.Node);
-            
-            block.transform.position = block.Node.Pos;
+
+            block.transform.DOMove(block.Node.Pos, switchNodeTime);
         }
+        
+        var squence = DOTween.Sequence();
+
+        foreach (var block in orderedBlocks)
+        {
+            var movePoint = block.MergingBlock ? block.MergingBlock.Pos : block.MergingBlock.Pos;
+            
+            squence.Insert(0, block.transform.DOMove(movePoint, switchNodeTime));
+        }
+
+        squence.OnComplete(() =>
+        {
+            foreach (var block in orderedBlocks.Where(b =>b.MergingBlock != null))
+            {
+                MergeBlocks(block, block.MergingBlock);
+            }
+            
+            ChangeState(GameState.SpawningBlocks);
+
+        });
+    }
+
+    void MergeBlocks(Block baseBlock, Block mergingBlock)
+    {
+        SpawnBlocks(baseBlock.Node, baseBlock.Value * 2);
+        
+        RemoveBlock(baseBlock);
+        RemoveBlock(mergingBlock);
+    }
+
+    void RemoveBlock(Block block)
+    {
+        _blocks.Remove(block);
+        Destroy(block.gameObject);
     }
 
     Node GetNodeAtPosition(Vector2 position)
