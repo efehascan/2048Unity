@@ -369,35 +369,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c9a3d1fc363fa64789fecb53895fe58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _widht: 4
-  _height: 4
+  widht: 4
+  height: 4
   nodePrefeb: {fileID: 1569523418860420805, guid: 69f40e59c867fcc45817fceb9dd4231a, type: 3}
   blockPrefeb: {fileID: 381860168235200514, guid: cf964a6e21b16dc40a374d4f4479a926, type: 3}
   boardPrefeb: {fileID: 1013693896480937877, guid: 61f2d71d37d2b8b4c9fce546be59badf, type: 3}
-  _types:
+  types:
   - Value: 2
-    Color: {r: 0.82037115, g: 1, b: 0.13679248, a: 1}
+    Color: {r: 0, g: 0.72156864, b: 0.5803922, a: 1}
   - Value: 4
-    Color: {r: 0, g: 1, b: 0.34002662, a: 1}
+    Color: {r: 0.03529412, g: 0.5176471, b: 0.8901961, a: 1}
   - Value: 8
-    Color: {r: 0.078987174, g: 0.23700398, b: 0.6698113, a: 1}
+    Color: {r: 0.42352942, g: 0.36078432, b: 0.90588236, a: 1}
   - Value: 16
-    Color: {r: 0.022472408, g: 0.9528302, b: 0.9353295, a: 1}
+    Color: {r: 0.88235295, g: 0.4392157, b: 0.33333334, a: 1}
   - Value: 32
-    Color: {r: 0.64003855, g: 0.3537736, b: 1, a: 1}
+    Color: {r: 0.8392157, g: 0.1882353, b: 0.19215687, a: 1}
   - Value: 64
-    Color: {r: 0.99981093, g: 1, b: 0.3820755, a: 1}
+    Color: {r: 0.9098039, g: 0.2627451, b: 0.5764706, a: 1}
   - Value: 128
-    Color: {r: 1, g: 0.35567456, b: 0, a: 1}
+    Color: {r: 0.99215686, g: 0.4745098, b: 0.65882355, a: 1}
   - Value: 256
-    Color: {r: 0.9339623, g: 0, b: 0.567522, a: 1}
+    Color: {r: 0.99215686, g: 0.79607844, b: 0.43137255, a: 1}
   - Value: 512
-    Color: {r: 0.27401042, g: 0, b: 0.6037736, a: 1}
+    Color: {r: 0.88235295, g: 0.69411767, b: 0.17254902, a: 1}
   - Value: 1024
-    Color: {r: 0.5566038, g: 0, b: 0.3594118, a: 1}
+    Color: {r: 0.09803922, g: 0.16470589, b: 0.3372549, a: 1}
   - Value: 2048
-    Color: {r: 0.5471698, g: 0, b: 0.0042914622, a: 1}
+    Color: {r: 0.43529412, g: 0.11764706, b: 0.31764707, a: 1}
   switchNodeTime: 0.3
+  travelTime: 0.2
+  winCondition: 2048
 --- !u!4 &1800494368
 Transform:
   m_ObjectHideFlags: 0

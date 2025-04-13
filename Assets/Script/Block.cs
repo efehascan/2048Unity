@@ -14,6 +14,9 @@ public class Block : MonoBehaviour
     [SerializeField] private TextMeshPro _text;
     
 
+    /// <summary>
+    /// Bloğu belirtilen tür ile başlatır: değerini, rengini ve metin içeriğini ayarlar.
+    /// </summary>
     public void Init(BlockType type)
     {
         Value = type.Value;
@@ -22,6 +25,9 @@ public class Block : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Bloğu belirtilen düğüme yerleştirir ve önceki düğüm ile olan bağlantıyı kaldırarak yeni düğümü işaretler.
+    /// </summary>
     public void SetBlock(Node node)
     {
         if(Node != null) Node.OccipiedBlock = null;
@@ -29,6 +35,9 @@ public class Block : MonoBehaviour
         Node.OccipiedBlock = this;
     }
 
+    /// <summary>
+    /// Belirtilen blok ile birleştirme işlemini başlatır; mevcut düğüm bağlantısını kaldırır ve diğer bloğu birleşmiş olarak işaretler.
+    /// </summary>
     public void MergeBlock(Block blockToMergewith)
     {
         MergingBlock = blockToMergewith;
